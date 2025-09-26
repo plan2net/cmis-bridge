@@ -1,0 +1,50 @@
+{
+  "name": "plan2net/cmis-bridge",
+  "description": "Bridge library that provides dkd/php-cmis compatible interface using optigov/php-cmis-client",
+  "type": "library",
+  "license": "MIT",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Plan2Net",
+      "email": "hello@plan2.net"
+    }
+  ],
+  "require": {
+    "php": ">=8.2",
+    "optigov/php-cmis-client": "^1.3",
+    "guzzlehttp/guzzle": "^7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^10.0",
+    "mockery/mockery": "^1.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "Plan2net\\CmisBridge\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Plan2net\\CmisBridge\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit --no-coverage",
+    "test-coverage": "phpunit",
+    "test-watch": "phpunit --no-coverage --watch"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-main": "1.0.x-dev"
+    }
+  },
+  "keywords": [
+    "cmis",
+    "alfresco",
+    "bridge",
+    "dkd",
+    "optigov",
+    "dms"
+  ]
+}

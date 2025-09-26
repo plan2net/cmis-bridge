@@ -1,15 +1,15 @@
 # Plan2net CMIS Bridge
 
-A bridge library that provides dkd/php-cmis interface compatibility using optigov/php-cmis-client as the underlying HTTP client.
+A bridge library that provides [dkd/php-cmis](https://github.com/dkd/php-cmis-client) interface compatibility using [optigov/php-cmis-client](https://github.com/optiGov/php-cmis-client) as the underlying HTTP client.
 
 ## Purpose
 
-This package was created to migrate TYPO3 extensions from the unmaintained `dkd/php-cmis` library to the actively maintained `optigov/php-cmis-client` while preserving API compatibility.
+This package was created to migrate TYPO3 extensions from the unmaintained [`dkd/php-cmis`](https://github.com/dkd/php-cmis-client) library to the actively maintained [`optigov/php-cmis-client`](https://github.com/optiGov/php-cmis-client) while preserving API compatibility.
 
 ## Features
 
 - **API Compatibility**: Drop-in replacement for dkd/php-cmis classes (read-only operations)
-- **HTTP Client**: Uses optigov/php-cmis-client for modern HTTP handling
+- **HTTP Client**: Uses [optigov/php-cmis-client](https://github.com/optiGov/php-cmis-client) for modern HTTP handling
 - **CMIS 1.1**: Supports CMIS Browser binding
 - **Object Model**: Document and Folder objects with property access
 - **DateTime Handling**: Proper parsing of Alfresco timestamp formats
@@ -114,7 +114,7 @@ $session->clearCache();
 // - Content stream metadata
 ```
 
-## Migration from dkd/php-cmis
+## Migration from [dkd/php-cmis](https://github.com/dkd/php-cmis-client)
 
 Simply replace the import statements:
 
@@ -166,7 +166,7 @@ This bridge was created specifically for:
 - Applications that need to retrieve and cache document metadata
 - Systems requiring file download functionality from CMIS repositories
 
-If you need full CMIS write capabilities, consider using the `optigov/php-cmis-client` library directly or extending this bridge with additional functionality.
+If you need full CMIS write capabilities, consider using the [`optigov/php-cmis-client`](https://github.com/optiGov/php-cmis-client) library directly or extending this bridge with additional functionality.
 
 ## Architecture
 
@@ -179,7 +179,7 @@ If you need full CMIS write capabilities, consider using the `optigov/php-cmis-c
 
 ## Dependencies
 
-- **optigov/php-cmis-client**: HTTP client for CMIS operations
+- **[optigov/php-cmis-client](https://github.com/optiGov/php-cmis-client)**: HTTP client for CMIS operations
 - **guzzlehttp/guzzle**: HTTP client library
 - **PHP 8.1+**: Modern PHP features
 

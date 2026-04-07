@@ -91,7 +91,7 @@ class FolderTest extends TestCase
         $folder->setProperties($properties);
 
         $creationDate = $folder->getCreationDate();
-        $this->assertInstanceOf(\DateTime::class, $creationDate);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $creationDate);
 
         // Convert milliseconds to seconds for comparison
         $expectedTimestamp = intval(1669366179934 / 1000);
@@ -107,7 +107,7 @@ class FolderTest extends TestCase
         $folder->setProperties($properties);
 
         $modDate = $folder->getLastModificationDate();
-        $this->assertInstanceOf(\DateTime::class, $modDate);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $modDate);
 
         $expectedTimestamp = intval(1669366199000 / 1000);
         $this->assertEquals($expectedTimestamp, $modDate->getTimestamp());

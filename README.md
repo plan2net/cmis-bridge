@@ -55,8 +55,13 @@ use Plan2net\CmisBridge\SessionFactory;
 // Create session factory
 $factory = new SessionFactory();
 
-// Create session with CMIS endpoint
-$session = $factory->createSession($url, $username, $password, $repositoryId);
+// Create session with CMIS endpoint (dkd-format parameters array)
+$session = $factory->createSession([
+    'dkd.phpcmis.binding.browser.url' => $url,
+    'dkd.phpcmis.session.repository.id' => $repositoryId,
+    'dkd.phpcmis.user' => $username,
+    'dkd.phpcmis.password' => $password,
+]);
 
 // Get objects
 $objectId = $session->createObjectId('your-object-id');
@@ -181,13 +186,13 @@ If you need full CMIS write capabilities, consider using the [`optigov/php-cmis-
 
 - **[optigov/php-cmis-client](https://github.com/optiGov/php-cmis-client)**: HTTP client for CMIS operations
 - **guzzlehttp/guzzle**: HTTP client library
-- **PHP 8.1+**: Modern PHP features
+- **PHP 8.2+**: Modern PHP features
 
 ## Compatibility
 
 - **CMIS 1.1 Browser Binding**: Read-only operations via HTTP
 - **Alfresco Community/Enterprise**: Tested with Alfresco repositories  
-- **TYPO3 12+ FAL Integration**: Designed for TYPO3 File Abstraction Layer
+- **TYPO3 13+ FAL Integration**: Designed for TYPO3 File Abstraction Layer
 - **Read-Only Scenarios**: Perfect for content browsing and file serving
 - **API Compatibility**: Subset of dkd/php-cmis interface for supported operations
 

@@ -3,7 +3,7 @@
   "description": "Bridge library that provides dkd/php-cmis compatible interface using optigov/php-cmis-client",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "13.0.0",
   "authors": [
     {
       "name": "Plan2Net",

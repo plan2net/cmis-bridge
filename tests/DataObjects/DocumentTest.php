@@ -96,7 +96,7 @@ class DocumentTest extends TestCase
 
         $creationDate = $document->getCreationDate();
 
-        $this->assertInstanceOf(\DateTime::class, $creationDate);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $creationDate);
         // Verify it's the correct date (timestamp 1669366179934 / 1000)
         $this->assertEquals(1669366179, $creationDate->getTimestamp());
     }
@@ -109,7 +109,7 @@ class DocumentTest extends TestCase
 
         $modificationDate = $document->getLastModificationDate();
 
-        $this->assertInstanceOf(\DateTime::class, $modificationDate);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $modificationDate);
         // Verify it's the correct date (timestamp 1669366199000 / 1000)
         $this->assertEquals(1669366199, $modificationDate->getTimestamp());
     }
@@ -162,7 +162,7 @@ class DocumentTest extends TestCase
 
         $creationDate = $document->getCreationDate();
 
-        $this->assertInstanceOf(\DateTime::class, $creationDate);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $creationDate);
     }
 
     public function testGetDateReturnsNullForMissingProperty(): void

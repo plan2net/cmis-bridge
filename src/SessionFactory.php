@@ -6,6 +6,7 @@ namespace Plan2net\CmisBridge;
 
 use CMIS\Session\SessionFactory as OptgovSessionFactory;
 use CMIS\Session\SessionOptions;
+use GuzzleHttp\Client as GuzzleClient;
 
 /**
  * Bridge class that provides dkd/php-cmis SessionFactory interface using optigov/php-cmis-client
@@ -50,19 +51,30 @@ class SessionFactory
             }
         }
 
-        // Create session options
+        // Create session options and extract Guzzle config from the httpInvoker
         $options = new SessionOptions();
-        // Set SSL verification based on HTTP invoker config if available
+        $guzzleConfig = ['auth' => [$username, $password]];
         if (null !== $httpInvoker && method_exists($httpInvoker, 'getConfig')) {
             $config = $httpInvoker->getConfig();
             $verifySSL = $config['verify'] ?? true;
             $options->setOption('verify', $verifySSL);
+            $guzzleConfig['verify'] = $verifySSL;
+            // Forward connect_timeout and timeout so requests fail fast when the server is unreachable
+            if (isset($config['connect_timeout'])) {
+                $guzzleConfig['connect_timeout'] = $config['connect_timeout'];
+            }
+            if (isset($config['timeout'])) {
+                $guzzleConfig['timeout'] = $config['timeout'];
+            }
         }
 
-        // Create optigov session
+        // Build a Guzzle client with auth + timeout that will be used for all HTTP requests
+        $guzzleClient = new GuzzleClient($guzzleConfig);
+
+        // Create optigov session (used only for URL / repository-id resolution)
         $optgovSession = OptgovSessionFactory::create($url, $repositoryId, $username, $password, null, $options);
 
         // Return our bridge session
-        return new Session($optgovSession, $parameters);
+        return new Session($optgovSession, $parameters, $guzzleClient);
     }
 }
